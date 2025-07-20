@@ -1,3 +1,6 @@
 # MQ calibration
 
-This repository contains code for calibrating MQ gas sensors using an Arduino. The code reads analog values from the sensors and prints them to the serial monitor.
+This repository contains the code for MQ calibration.
+
+It saves the calibration data on flash memory for persistent storage.
+If the device is restarted, it will load the last calibration data from flash memory.
