@@ -6,7 +6,7 @@
 const unsigned long CALIBRATION_DURATION_MS = 48UL * 3600 * 1000;
 const unsigned long SAVE_PROGRESS_INTERVAL_MS = 5UL * 60 * 1000;
 
-#define VCC 5.0
+#define VCC 5.0  // ler do próprio pino
 #define ADC_RESOLUTION 4095.0
 #define VREF 3.3
 
@@ -27,9 +27,20 @@ static unsigned long lastSaveTime = 0;
 // Função privada para calcular o Rs
 static float calcularRs(int pino, float rl_kohm) {
   int valor_adc = analogRead(pino);
-  float vout = (valor_adc * VREF) / ADC_RESOLUTION;
-  if (vout == 0) return 0;
-  return ((VCC * rl_kohm) / vout) - rl_kohm;
+  float v_adc = (valor_adc * VREF) / ADC_RESOLUTION;
+  float v_aout = v_adc * 2.0;
+
+  if (v_aout > VCC) {
+    v_aout = VCC;
+  }
+
+  if (v_aout == 0) {
+    return 0;  // Retorna 0 para indicar um erro ou leitura inválida.
+  }
+
+  float rs = ((VCC * rl_kohm) / v_aout) - rl_kohm;
+
+  return rs;
 }
 
 void calibration_setup(DeviceState status) {
