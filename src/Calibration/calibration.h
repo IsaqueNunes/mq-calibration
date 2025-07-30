@@ -1,5 +1,5 @@
-#ifndef CALIBRATION_MANAGER_H
-#define CALIBRATION_MANAGER_H
+#ifndef CALIBRATION_H
+#define CALIBRATION_H
 
 #include <Arduino.h>
 
@@ -14,4 +14,4 @@ void normal_operation_loop();  // Função para o modo de operação normal
 extern Sensor sensores[];
 extern const int NUM_SENSORES;
 
-#endif  // CALIBRATION_MANAGER_H
+#endif  // CALIBRATION_H

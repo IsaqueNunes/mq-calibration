@@ -1,5 +1,5 @@
-#ifndef FLASH_MANAGER_H
-#define FLASH_MANAGER_H
+#ifndef FLASH_H
+#define FLASH_H
 
 #include <Arduino.h>
 
@@ -26,4 +26,4 @@ void flash_save_progress(
 
 void flash_commit_final_results(Sensor sensors[], int num_sensors);
 
-#endif  // FLASH_MANAGER_H
+#endif  // FLASH_H
